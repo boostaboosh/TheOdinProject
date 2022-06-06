@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Fix the addition exercise</title>
+    </head>
+    <body>
+        <script>
+            let a = +prompt("First number?", 1);
+            let b = +prompt("Second number?", 2);
+            // The value is a + b is "12" because the prompt returns user input as a string.
+            // We want the numbers inputted to be summed and not concatenated so we must convert the strings to numbers before using the binary addition operator otherwise the operator is interpreted as the string concatenation operator.
+            // We can convert a and b to numbers using the Number(...) constructor for each of them but the shorthand +variableName is quicker.
+            // We can use it on the prompt like = +prompt... or on the variable names in the alert like alert(+a + +b).
+            alert(a + b);
+        </script>
+    </body>
+</html>
