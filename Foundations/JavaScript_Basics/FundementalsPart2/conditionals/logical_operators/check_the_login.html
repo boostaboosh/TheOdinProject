@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>check_the_login</title>
+    </head>
+    <body>
+        <script>
+            // Write the code which asks for a login with prompt.
+            let whoIsThere = prompt("Who's there?");
+            // If the visitor enters "Admin", then prompt for a password, if the input is an empty line or Esc – show “Canceled”, if it’s another string – then show “I don’t know you”.
+            if (whoIsThere === "Admin") {
+                // The password is checked as follows:
+                let password = prompt("Enter password.");
+                // If it equals “TheMaster”, then show “Welcome!”,
+                if (password === "TheMaster") {
+                    alert("Welcome!");
+                // For an empty string or cancelled input, show “Canceled”
+                // Hint: passing an empty input to a prompt returns an empty string ''. Pressing ESC during a prompt returns null.
+                } else if (password === "" || null) {
+                    alert("Canceled");
+                    // Another string – show “Wrong password”,
+                } else {
+                    alert("Wrong password");
+                }
+            } else if (whoIsThere === "" || null) {
+                alert("Canceled");
+            } else {
+                alert("I don't know you.");
+            }
+        </script>
+    </body>
+</html>
