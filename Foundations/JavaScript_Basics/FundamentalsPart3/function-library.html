@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Function library example</title>
-  <style>
-    input {
-      font-size: 2em;
-      margin: 10px 1px 0;
-    }
-  </style>
+    <style>
+      input {
+        font-size: 2em;
+        margin: 10px 1px 0;
+      }
+    </style>
   </head>
 <body>
 
@@ -20,6 +20,110 @@
     const input = document.querySelector('.numberInput');
     const para = document.querySelector('p');
 
+    // some function definitions
+    function squared(num) {
+      return num * num;
+    }
+
+    function cubed(num) {
+      return num * num * num;
+    }
+
+    function factorial(num) {
+      if (num < 0) return undefined;
+      if (num === 0) return 1;
+      let x = num - 1;
+      while (x > 1) {
+        num *= x;
+        x--;
+      }
+      return num;
+    }
+
+    function calculateCircumference(radius) {
+      if (radius < 0) return undefined;
+      return 2 * radius * Math.PI;
+    }
+
+    function calculateRoot(rootIndex, radicand) 
+    {
+    /* 
+    describing an algorithm (instructions for solving a problem) with pseudocode
+
+    step 1: determine the inputs and outputs
+    inputs: radicand, rootIndex
+    output: root
+
+    step 2: break down problem into smaller tasks
+    The root of a number (radicand) is that number which multiplied by itself rootIndex number of times obtains a number equal to the radicand.
+    If the radicand is negative and the rootIndex is even there is no root because a number multiplied by itself an even number of times will always be positive.
+    Otherwise I can test to see if a number is the root of another by multiplying it by itself rootIndex number of times starting with the radicand and decrementing it by 1 until I find a result.
+
+    step 3: describe each subtask in pseudocode.
+    if radicand < 0 and rootIndex is even
+      root is undefined
+    else
+      root = radicand
+      while root ** rootIndex is not equal to radicand:
+        root minus 1
+      root is the current value of root
+    return root
+
+    step 4: test your pseudocode by working a problem:
+    radicand = 8
+    rootIndex = 2
+
+    radicand in greater than zero
+    root = 8
+    while root ** rootIndex is not equal to radicand:
+      root ** 2 = 8 ** 2 = 64
+      root - 1 = 8 - 1 = 7
+      7 ** 2 = 49
+      7 - 1 = 6
+      6 ** 2 = 36
+      6 - 1 = 5
+      5 ** 2 = 25
+      5 - 1 = 4
+      4 ** 2 = 16
+      4 - 1 = 3
+      3 ** 2 = 9
+      3 - 1 = 2
+      2 ** 2 = 4 // uh oh, the root value is never equal to 8
+      2 - 1 = 1
+      1 ** 2 = 1
+      1 - 1 = 0
+      0 ** 2 = 0
+      0 - 1 = -1
+      -1 ** 2 = 1
+      ETC. //infinite loop
+
+      okay, I'm going to just return the root of the number using the prebuilt Math object pow method.
+      The Math.pow() method returns the value of a base raised to a power. 
+      That is:
+      𝙼𝚊𝚝𝚑.𝚙𝚘𝚠 ( 𝚡 , 𝚢 ) = x**y
+      Using the Math.pow(radicand, 1/rootIndex) I will obtain the root of the radicand.
+      Because a number raised to the power of 1/rootIndex returns is the root of that number. 
+      For example:
+      Math.pow(25, 1/2) = 25**1/2 = square root of 25 = 5
+      */
+      return Math.pow(radicand, 1/rootIndex);
+    }
+
+    // a way to print out info about the entered number using an event handler
+    input.addEventListener('change', () => {
+      const num = parseFloat(input.value);
+      if (isNaN(num)) {
+        para.textContent = 'You need to enter a number!';
+      } else {
+        para.textContent = `${num} squared is ${squared(num)}. `;
+        para.textContent += `${num} cubed is ${cubed(num)}. `;
+        para.textContent += `${num} factorial is ${factorial(num)}. `;
+        para.textContent += `A circle with a radius of ${num} has a circumference of ${calculateCircumference(num)}. `;
+        para.textContent += `The square root of ${num} is ${calculateRoot(2, num)}. `;
+        para.textContent += `The cube root of ${num} is ${calculateRoot(3, num)}. `;
+      }
+    });
+  
   </script>
 </body>
 </html>
