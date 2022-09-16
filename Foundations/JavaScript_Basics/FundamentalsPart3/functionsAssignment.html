@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Fundamentals Part 3 assignment</title>
+</head>
+<body lang="en">
+    <script>
+        console.log("hello, babey");
+
+        function add7 (number) {
+            return number + 7;
+        }
+
+        function multiply (num1, num2) {
+            return num1 * num2;
+        }
+
+        let capitalise = function(string) {
+            let firstLetter = string.slice(0, 1).toUpperCase();
+            let restOfWord = string.slice(1, string.length)
+            return firstLetter+restOfWord;
+        }
+
+        let lastLetter = string => string.slice(string.length - 1, string.length);
+    </script>
+</body>
