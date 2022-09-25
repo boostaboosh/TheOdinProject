@@ -1,0 +1,1 @@
+console.log("I am JavaScript from an external JavaScript file linked to from this webpage's html file.");
