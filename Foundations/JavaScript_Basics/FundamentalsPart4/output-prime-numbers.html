@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Output prime numbers</title>
+    </head>
+    <body>
+        <script>
+            //Write the code which outputs prime numbers in the interval from 2 to n
+            let isPrime = function isNumberPrime (number) {
+                for (let divisorIterator = number; divisorIterator > 1; divisorIterator--) {
+                    if (divisorIterator === number) { continue }
+                    else if ( number % divisorIterator === 0) { return false }
+                }
+                return true;
+            }
+
+            let primeNumbersInRange = "";
+
+            let lastNumberInRange = prompt("Enter last number in range of prime numbers", "0");
+            for (let numberIterator = 2; numberIterator <= lastNumberInRange; numberIterator++) {
+                if (isPrime(numberIterator)) {
+                    primeNumbersInRange += numberIterator + ',';
+                }
+            }
+
+            primeNumbersInRange = primeNumbersInRange.slice( 0, primeNumbersInRange.length - 1) + '.';
+            alert(primeNumbersInRange);
+        </script>
+    </body>
+</html>
