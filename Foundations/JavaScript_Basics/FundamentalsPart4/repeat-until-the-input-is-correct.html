@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Repeat until the input is correct</title>
+    </head>
+    <body>
+        <script>
+            let promptUser = function promptUserForNumberGreaterThan100 () 
+            { return prompt("Enter a number greater than 100", "0"); }
+
+            do {
+                let userNumberInput = promptUser();
+            } while ( userNumberInput <= 100 && userNumberInput);
+        </script>
+    </body>
+</html>
