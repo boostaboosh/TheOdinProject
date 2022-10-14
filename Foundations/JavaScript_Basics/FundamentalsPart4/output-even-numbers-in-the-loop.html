@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Output even numbers in the loop</title>
+    </head>
+    <body>
+        <script>
+            //output even numbers from 2 to 10
+            let isEven = function isNumberEven (number) {
+                if (number % 2 === 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            for (let numberIteration = 2; numberIteration <= 10; numberIteration++) {
+                if (! isEven(numberIteration)) {continue;}
+                else {alert(numberIteration);}
+            }
+        </script>
+    </body>
+</html>
