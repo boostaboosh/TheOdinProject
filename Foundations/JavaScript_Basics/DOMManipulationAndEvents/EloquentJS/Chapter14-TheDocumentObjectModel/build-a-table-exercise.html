@@ -59,7 +59,70 @@
           problem. An algorithm defines the steps that need to be taken by the computer to solve a 
           problem in pseudocode.
           
+          create table element
+
+          create table row element which will be the header row
+          get a reference to the first object in the mountains array
+          for each property of the first element in the mountains array
+            create table header cell element
+            add property name to table header cell element
+            add table header cell element to table header row element
+          add table header row to table
+          
+          for each mountain object in the mountains array
+            create a table row which will contain that mountain's property values
+            for each property in the mountain object
+              create a regular cell element
+              add the property value to the cell element
+              add the cell element to the table row for that mountain
+            add mountain's table row element to the table element
+          
+          get reference to div with id mountains in document
+          add table element to div with id mountains inside the document object model
       */
+      // create table element
+      let tableNode = document.createElement("table");
+
+      // create table row element which will be the header row
+      let headerRow = document.createElement("tr");
+      // get a reference to the first object in the mountains array
+      let firstMountain = MOUNTAINS[0];
+      let properties = firstMountain.keys;
+      // for each property of the first element in the mountains array
+      for (propertyIndex = 0; propertyIndex < 3; propertyIndex++) {
+        // create table header cell element
+        let headerCell = document.createElement("th");
+        // add property name to table header cell element
+        let headerCellContent = document.createTextNode(properties[propertyIndex]);
+        headerCell.appendChild(headerCellContent);
+        // add table header cell element to table header row element
+        headerRow.appendChild(headerCell);
+      }
+      // add table header to table
+      tableNode.appendChild(headerRow);
+          
+      // for each mountain object in the mountains array
+      for (let mountain of MOUNTAINS) {
+        // create a table row which will contain that mountain's property values
+        let row = document.createElement("tr");
+        // for each property in the mountain object
+        for (let property of mountain) {
+          // create a regular cell element
+          let tableDataCell = document.createElement("td");
+          // add the property value to the cell element
+          let cellData = document.createTextNode(property);
+          tableDataCell.appendChild(cellData);
+          // add the cell element to the table row for that mountain
+          row.appendChild(cellData);
+        }
+        // add mountain's table row element to the table element
+        tableNode.appendChild(row);
+      }
+          
+      // get reference to div with id mountains in document
+      let mountainsDiv = document.body.getElementById("mountains");
+      // add table element to div with id mountains inside the document object model
+      mountainsDiv.appendChild(tableNode);
     </script>
   </body>
 </html>
