@@ -54,6 +54,7 @@
           contains a HTML table with a header row listing the object property names of the objects
           inside the MOUNTAINS array, and the following rows containing the property values of one 
           object per row.
+          Right-align cells that contain number values by setting their style.textAlign property to "right"
         - Given your inputs, what are the steps necessary to return the desired output?
           Write an algorithm to solve the problem. In other words, write a recipe for solving the
           problem. An algorithm defines the steps that need to be taken by the computer to solve a 
@@ -75,6 +76,8 @@
               create a regular cell element
               add the property value to the cell element
               add the cell element to the table row for that mountain
+              if the property value is of type numer
+                align cell text content to the right
             add mountain's table row element to the table element
           
           get reference to div with id mountains in document
@@ -87,13 +90,12 @@
       let headerRow = document.createElement("tr");
       // get a reference to the first object in the mountains array
       let firstMountain = MOUNTAINS[0];
-      let properties = firstMountain.keys;
       // for each property of the first element in the mountains array
-      for (propertyIndex = 0; propertyIndex < 3; propertyIndex++) {
+      for (let property in firstMountain) {
         // create table header cell element
         let headerCell = document.createElement("th");
         // add property name to table header cell element
-        let headerCellContent = document.createTextNode(properties[propertyIndex]);
+        let headerCellContent = document.createTextNode(property);
         headerCell.appendChild(headerCellContent);
         // add table header cell element to table header row element
         headerRow.appendChild(headerCell);
@@ -106,21 +108,27 @@
         // create a table row which will contain that mountain's property values
         let row = document.createElement("tr");
         // for each property in the mountain object
-        for (let property of mountain) {
+        for (let property in mountain) {
           // create a regular cell element
           let tableDataCell = document.createElement("td");
           // add the property value to the cell element
-          let cellData = document.createTextNode(property);
+          let propertyValue = mountain[property];
+          let cellData = document.createTextNode(propertyValue);
           tableDataCell.appendChild(cellData);
           // add the cell element to the table row for that mountain
-          row.appendChild(cellData);
+          row.appendChild(tableDataCell);
+          // if the property value is of type number
+          if ( typeof(propertyValue) === 'number' ) {
+            // right align text contents of cell
+            tableDataCell.style.textAlign = "right";
+          }
         }
         // add mountain's table row element to the table element
         tableNode.appendChild(row);
       }
           
       // get reference to div with id mountains in document
-      let mountainsDiv = document.body.getElementById("mountains");
+      let mountainsDiv = document.getElementById("mountains");
       // add table element to div with id mountains inside the document object model
       mountainsDiv.appendChild(tableNode);
     </script>
