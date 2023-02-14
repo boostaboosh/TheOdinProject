@@ -17,7 +17,7 @@
                 Implement my own version of the document.getElementsByTagName() function
                 that takes a node and a string (the tag name) as argument and returns an
                 array containing all descendant element nodes with the given tag name.
-                To find an elements tag name use its nodeName property which returns a nodes
+                To find an elements tag name use its nodeName property which returns a node's
                 tag name in all capital letters. Use toUpperCase or toLowerCase to compensate
                 for this.
             2 - plan how you are going to solve the problem
@@ -37,15 +37,36 @@
                     Write an algorithm, i.e., a recipe to solve your problem. Use pseudocode which
                     are natural language computer program instructions. Define the steps that need
                     to be taken by the computer to solve the problem.
-                create descendantsWithTagName array
-                for each child of node
-                    if child of type tagName
-                        add child to descendatsWithTagName
-                        byTagName(child)
-                    otherwise
-                        byTagName(child)
 
+                create descendantsWithTagName array
+
+                function getDescendantsByTagName(node, tagName)
+                    for each child of node
+                        childTag is equal to child's nodeName property toLowerCase
+                        if childTag is equal to tagName
+                            then child is a descendant of node with the given tag name
+                            add child to descendantsWithTagName
+                        getDescendantsByTagName(child, tagName)
+
+                getDescendantsByTagName(node, tagName);
+
+                return descendantsWithTagName
             */
+           let descendantsWithTagName = [];
+
+           function getDescendantsByTagName(node, tagName) {
+               for (let child of node.childNodes) {
+                   let childTag = child.nodeName.toLowerCase();
+                   if (childTag === tagName) {
+                       descendantsWithTagName.push(child);
+                   }
+                   getDescendantsByTagName(child, tagName);
+               }
+           }
+
+           getDescendantsByTagName(node, tagName);
+
+           return descendantsWithTagName;
         }
 
         console.log(byTagName(document.body, "h1").length);
