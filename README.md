@@ -1,2 +1,2 @@
 # TheOdinProject
-a repo for the files I create while completing The Odin Project
+a repo for the files I create while completing The Odin Project: https://www.theodinproject.com/
