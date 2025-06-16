@@ -47,22 +47,30 @@ programming problem solving method
 */
 
 // make a paragraph element which contains a balloon emoji
-let balloon = document.createElement('p');
-let balloonText = document.createTextNode("🎈");
+let balloon = document.createElement("p");
+balloon.textContent = "🎈";
+
 let fontSize = 10;
-balloon.style.fontSize = fontSize;
-document.body.appendChild(balloon);
+balloon.style.fontSize = fontSize + "px";
+
+document.querySelector("body").appendChild(balloon);
 
 // add an event handler for keyboard button presses
-balloon.addEventListener("keydown", event => {
-switch (true) {
-// if the down arrow is pressed decrease the size of the balloon emoji by 10%
-case (event.key == "ArrowUp"):
-    balloon.style.fontSize = balloon.style.fontSize.getValue
-    break;
+document.body.addEventListener("keydown", event => {
+  event.preventDefault();
 
-case (event.key == "ArrowDown"):
-    balloon
-    break;
-}
+  switch (true) {
+  // if the down arrow is pressed decrease the size of the balloon emoji by 10%
+  case (event.key == "ArrowUp"):
+      if (parseInt(balloon.style.fontSize) >= 100)
+      {
+        balloon.textContent = "💥"
+      }
+      balloon.style.fontSize = parseFloat(balloon.style.fontSize) * 1.1 + "px";
+      break;
+
+  case (event.key == "ArrowDown"):
+      balloon.style.fontSize = parseFloat(balloon.style.fontSize) * 0.9 + "px";
+      break;
+  }
 });
